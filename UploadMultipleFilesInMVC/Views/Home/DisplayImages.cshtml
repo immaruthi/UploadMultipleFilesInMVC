@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UploadMultipleFilesInMVC.Models.DisplayData>
+
+@{
+    ViewBag.Title = "Your Recent Uploadings";
+}
+
+<h2>Your API Results</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<table id="customers" border="1">
+    <tr>
+        <th>Scanned Images</th>
+        <th>Text found</th>
+        <th>Data Lake Storage URL</th>
+        @*<th>Remarks</th>*@
+    </tr>
+    @foreach (var item in Model)
+    {
+        foreach (var items in item.listApiData)
+        {
+    <tr>
+        <td style="max-width:250px; max-height:274px;">
+            @{
+            var base64 = Convert.ToBase64String(items.imageData);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            }
+            <img src='@imgSrc' style='width:100%' />
+        </td>
+        <td style="max-width:250px; max-height:274px;">@Html.DisplayFor(modelItem => items.imageText)</td>
+        <td style="max-width:259px; max-height:274px;white-space:pre-wrap; word-wrap:break-word"><a href="@Html.DisplayFor(modelItem => items.ImageUrl)">@Html.DisplayFor(modelItem => items.ImageUrl)</a></td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+        </td>*@
+    </tr>
+        }
+    }
+
+
+</table>
