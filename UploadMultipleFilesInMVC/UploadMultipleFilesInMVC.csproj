@@ -133,7 +133,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="HandwrittenText\handtext.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\CognitiveAPIServices - Web Deploy.pubxml" />
@@ -170,6 +169,8 @@
     <Compile Include="Models\TextLocation.cs" />
     <Compile Include="Models\VisionAPIErrorMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CognitiveAPIService.cs" />
+    <Compile Include="Services\StorageAPIService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -192,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HandwrittenText\" />
     <Folder Include="UploadedFiles\" />
   </ItemGroup>
   <PropertyGroup>

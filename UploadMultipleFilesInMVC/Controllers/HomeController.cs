@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -110,10 +111,22 @@ namespace UploadMultipleFilesInMVC.Controllers
 
                                         var rootobject = JsonConvert.DeserializeObject<RootObject>(contentString);
 
+                                        StringBuilder builder = new StringBuilder();
+
+
+                                        for (int s = 0; s < rootobject.recognitionResult.lines.Count; s++)
+                                        {
+                                            builder.Append(rootobject.recognitionResult.lines[s].text.ToString());
+                                        }
+                                            
+                                        
+
+                                        string computedResult = builder.ToString();
+
                                         apidata.Add(new APIData()
                                         {
                                             imageData = fileData,
-                                            imageText = rootobject.recognitionResult.lines[0].text,
+                                            imageText = computedResult,
                                             ImageUrl = fileSas.Uri.AbsoluteUri.ToString(),
                                             Error = "NO",
                                             Remarks = "No Errors Found"
@@ -121,11 +134,15 @@ namespace UploadMultipleFilesInMVC.Controllers
 
                                         var jsonResponse = JToken.Parse(contentString).ToString();
 
+                                        
+
+                                        
+
                                         //LocalResource localResource = RoleEnvironment.GetLocalResource("HandwrittenText");
 
                                         //Define the file name and path
                                         //string[] paths = { localResource.RootPath, "handtext.txt" };
-                                        String filePath = Server.MapPath("~/HandwrittenText/handtext.txt");
+                                        //String filePath = Server.MapPath("~/HandwrittenText/handtext.txt");
 
                                         //if (System.IO.File.Exists(filePath))
                                         //{
