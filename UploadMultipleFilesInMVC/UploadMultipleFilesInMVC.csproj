@@ -151,6 +151,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DBServiceAPI\DataBaseAPI.cs" />
     <Compile Include="DocumentService\CosmosAPIService.cs" />
     <Compile Include="Global.asax.cs">
@@ -184,6 +185,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\DisplayImages.cshtml" />
     <Content Include="Views\Home\GetErrorPage.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
